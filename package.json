@@ -25,6 +25,6 @@
   "dependencies": {
     "commander": "^2.13.0",
     "inquirer": "^5.0.1",
-    "uport-client": "github:raininja/uport-js-client#master"
+    "uport-client": "graininja/uport-js-client#fix/build_error"
   }
 }
