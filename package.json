@@ -1,6 +1,6 @@
 {
   "name": "uport-cli-client",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Create and manage uPort identities from the command line.",
   "main": "uport-id.js",
   "scripts": {
@@ -25,6 +25,6 @@
   "dependencies": {
     "commander": "^2.13.0",
     "inquirer": "^5.0.1",
-    "uport-client": "graininja/uport-js-client#fix/build_error"
+    "uport-client": "raininja/uport-js-client#fix/build_error"
   }
 }

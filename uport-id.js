@@ -18,7 +18,7 @@ const ipfsUrl = 'https://ipfs.infura.io/ipfs/'
 
 program
   .command('create <name>')
-  .description('Create a new uPort identity with a given name. Name is just a reference and not related to the identity.')
+  .description('Create a new uPort identity with a given name. This "name" is just a label and not internal to the identity.')
   .action((name) => {
     fileExist(`./uport-client/index.json`).then(exist => {
       if (exist) {
@@ -31,7 +31,7 @@ program
                       .then(res => {
                         client = res
                         if(client.initialized) {
-                          throw new Error("Can't create identity with same reference name")
+                          throw new Error("May not create an identity with a duplicate name.")
                         } else {
                           return readDeploy(name)
                         }
@@ -39,7 +39,7 @@ program
                         deploy = bool
                         return readLocalDDO(name)
                       }).then(appDDO => {
-                        console.log('Identity already configured but was not initialized, try intializing again:')
+                        console.log('Identity configured but not initialized.')
                         return initFlow({deploy, appDDO}, client)
                       })
           } else {
@@ -101,7 +101,7 @@ program
         })
       }).then(answers => {
         if (answers.appConfirm === false) {
-          return
+          return //TODO cleanup no response
         }
         return inquirer.prompt(txt.appConfig).then(answers => {
           config.appDDO = answers
